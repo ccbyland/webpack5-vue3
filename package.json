@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack server --env development",
-    "build": "webpack --env production"
+    "dev": "webpack server --config ./build/webpack.development.js",
+    "build": "webpack --config ./build/webpack.development.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,9 @@
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.2",
     "sass": "^1.58.3",
@@ -23,6 +25,8 @@
     "style-loader": "^3.3.1",
     "vue": "^3.2.36",
     "vue-loader": "^17.0.1",
+    "vue-router": "^4.1.6",
+    "vuex": "^4.1.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"

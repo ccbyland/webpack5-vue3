@@ -5,10 +5,18 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "./src/main.ts"),
+  entry: path.resolve(__dirname, "../src/main.ts"),
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "js/[name].js",
+  },
+  resolve: {
+    // 这些选项能设置模块如何被解析
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".vue"], // 尝试按顺序解析这些后缀名
+    alias: {
+      "@": "./",
+    }, // 创建 import 或 require 的别名，来确保模块引入变得更简单
+    symlinks: false, // 是否将符号链接(symlink)解析到它们的符号链接位置
   },
   module: {
     rules: [
@@ -16,6 +24,16 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            esModule: false
+          }
+        },
+        type: 'javascript/auto'
       },
       {
         test: /\.vue$/,
@@ -28,7 +46,9 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true,
+              modules: {
+                localIdentName: "[name]_[local]_[hash:5]",
+              },
             },
           },
           "sass-loader",
@@ -38,7 +58,7 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
-      template: path.resolve(__dirname, "./index.html"),
+      template: path.resolve(__dirname, "../index.html"),
       filename: "index.html",
       title: "新标题",
     }),

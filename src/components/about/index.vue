@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.app">
-    <router-view></router-view>
+    <div>about</div>
   </div>
 </template>
 <script>
@@ -8,7 +8,6 @@ export default {};
 </script>
 <style lang="scss" module>
 .app {
-  padding: 5px;
-  background: #000;
+  background: blue;
 }
 </style>
