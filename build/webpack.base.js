@@ -3,6 +3,9 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader/dist/index");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
+// const AutoImport = require("unplugin-auto-import/webpack");
+// const Components = require("unplugin-vue-components/webpack");
+// const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 
 module.exports = {
   entry: path.resolve(__dirname, "../src/main.ts"),
@@ -26,21 +29,22 @@ module.exports = {
         use: ["babel-loader"],
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(gif|jpg|png|bmp|eot|woff|woff2|ttf|svg)/,
         use: {
-          loader: 'file-loader',
+          loader: "file-loader",
           options: {
-            esModule: false
-          }
+            limit: 1024,
+            esModule: false,
+          },
         },
-        type: 'javascript/auto'
+        type: "javascript/auto",
       },
       {
         test: /\.vue$/,
         use: ["vue-loader"],
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.(c|sa|sc)ss$/,
         use: [
           miniCssExtractPlugin.loader,
           {
@@ -67,5 +71,11 @@ module.exports = {
     new miniCssExtractPlugin({
       filename: "css/[name].css",
     }),
+    // AutoImport({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
+    // Components({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
   ],
 };

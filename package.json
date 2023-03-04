@@ -23,15 +23,16 @@
     "sass-loader": "^13.2.0",
     "scss-loader": "^0.0.1",
     "style-loader": "^3.3.1",
+    "unplugin-auto-import": "^0.15.0",
+    "unplugin-vue-components": "^0.24.0",
     "vue": "^3.2.36",
     "vue-loader": "^17.0.1",
     "vue-router": "^4.1.6",
     "vuex": "^4.1.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^4.11.1",
+    "element-plus": "^2.2.33",
     "webpack-merge": "^5.8.0"
   }
 }
