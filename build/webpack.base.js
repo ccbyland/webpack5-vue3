@@ -15,7 +15,7 @@ module.exports = {
   },
   resolve: {
     // 这些选项能设置模块如何被解析
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".vue"], // 尝试按顺序解析这些后缀名
+    extensions: [".js", ".ts", ".json", ".vue"], // 尝试按顺序解析这些后缀名
     alias: {
       "@": "./",
     }, // 创建 import 或 require 的别名，来确保模块引入变得更简单
@@ -29,15 +29,40 @@ module.exports = {
         use: ["babel-loader"],
       },
       {
-        test: /\.(gif|jpg|png|bmp|eot|woff|woff2|ttf|svg)/,
-        use: {
-          loader: "file-loader",
-          options: {
-            limit: 1024,
-            esModule: false,
+        test: /\.(gif|jpe?g|png|bmp|svg)/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024, // 小于10kb的图片会被base64处理
           },
         },
-        type: "javascript/auto",
+        generator: {
+          // 将图片文件输出到 static/images 目录中
+          // 在这里的hash表示哈希表，意思就是指将图片放在不同的id下，因为hash的意思就是将图片等资源打包后有不同的id属性
+          // 将图片文件命名 [hash:8][ext][query]
+          // [hash:8]: hash值取8位
+          // [ext]: 使用之前的文件扩展名，例如图片后缀的jpg那么打包之后也为jpg
+          // [query]: 添加之前的query参数
+          filename: "static/images/[hash:8][ext][query]",
+        },
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf)/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024, // 小于10kb的图片会被base64处理
+          },
+        },
+        generator: {
+          // 将图片文件输出到 static/imgs 目录中
+          // 在这里的hash表示哈希表，意思就是指将图片放在不同的id下，因为hash的意思就是将图片等资源打包后有不同的id属性
+          // 将图片文件命名 [hash:8][ext][query]
+          // [hash:8]: hash值取8位
+          // [ext]: 使用之前的文件扩展名，例如图片后缀的jpg那么打包之后也为jpg
+          // [query]: 添加之前的query参数
+          filename: "static/font/[hash:8][ext][query]",
+        },
       },
       {
         test: /\.vue$/,
