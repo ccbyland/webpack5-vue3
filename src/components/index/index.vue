@@ -1,9 +1,7 @@
 <template>
-  <div :class="$style.app">
-    <!-- <router-link :class="$style.link" to="/home">Go to Home</router-link>
-    <router-link :class="$style.link" to="/about">Go to About</router-link> -->
-    <div :class="$style.link" @click="goto('home')">Go to Home</div>
-    <div :class="$style.link" @click="goto('about')">Go to About</div>
+  <div class="app">
+    <div class="link" @click="goto('home')">Go to Home</div>
+    <div class="link" @click="goto('about')">Go to About</div>
   </div>
 </template>
 <script setup>
@@ -14,10 +12,9 @@ const goto = (target) => {
   router.push(target);
 };
 </script>
-<style lang="scss" module>
+<style scoped lang="scss">
 .app {
-  padding: 30px;
-  background: #eee;
+  background: lightcoral;
   .link {
     text-decoration: underline;
     line-height: 30px;

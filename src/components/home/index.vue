@@ -1,26 +1,17 @@
 <template>
-  <div :class="$style.app">
-    <div>home</div>
-    <img :class="$style.hover" src="./image/1.png" />
-    <div :class="$style.img"></div>
+  <div>
+    <div class="app">
+      <el-tag>Tag 1</el-tag>
+      <el-tag class="ml-2" type="success">Tag 2</el-tag>
+      <el-tag class="ml-2" type="info">Tag 3</el-tag>
+      <el-tag class="ml-2" type="warning">Tag 4</el-tag>
+      <el-tag class="ml-2" type="danger">Tag 5</el-tag>
+    </div>
   </div>
 </template>
-<script>
-export default {};
-</script>
-<style lang="scss" module>
+<script setup></script>
+<style scoped lang="scss">
 .app {
-  background: red;
-  .hover{
-    width: 60px;
-    height: 60px;
-  }
-  .img {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-image: url("./image/1.png");
-    background-size: contain;
-  }
+  background: #999;
 }
 </style>

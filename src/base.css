@@ -1,0 +1,128 @@
+/* 清除默认样式 */
+
+/* 设置所有元素的box-sizing属性为border-box */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 清除内外边距 */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+code,
+em,
+strong,
+small,
+sub,
+sup,
+ol,
+ul,
+li,
+fieldset,
+legend,
+button,
+input,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* 让h1到h6的字体大小相等 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+/* 让列表元素（li）的样式更清晰 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 让链接（a）去除下划线，并给hover和focus状态添加下划线 */
+a {
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* 让button和input的样式更加清晰 */
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+
+/* 让input和textarea的边框更加清晰 */
+input,
+textarea {
+  border-radius: 0;
+  border: none;
+  outline: none;
+}
+
+/* 修复一些元素在某些浏览器中的样式问题 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
